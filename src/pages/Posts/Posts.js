@@ -1,22 +1,12 @@
-import { useState } from 'react';
-import { useQuery } from 'react-query';
-import { PostsService } from 'services/posts.service';
+import { usePosts } from 'hooks/usePosts';
 
 const Posts = () => {
-  const [posts, setPosts] = useState([])
-  const { isLoading, data: response } = useQuery('posts list', () => PostsService.getAll(), {
-    onSuccess: ({ data }) => {
-      setPosts(data)
-    },
-    onError: (error) => {
-      alert(error.message)
-    }
-  })
+  const { isLoading, posts } = usePosts();
 
   return (
     <div>
       <h1>Posts</h1>
-      {isLoading ? <div>loading</div> : response?.data.length ?
+      {isLoading ? <div>loading</div> : posts.length ?
         <div>
           {posts.map(post => (
             <div key={post.id}>
