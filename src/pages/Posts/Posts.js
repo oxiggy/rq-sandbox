@@ -1,3 +1,5 @@
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { usePosts } from 'hooks/usePosts';
 
 const Posts = () => {
@@ -10,7 +12,7 @@ const Posts = () => {
         <div>
           {posts.map(post => (
             <div key={post.id}>
-              <h2>{post.title}</h2>
+              <h2><Link to={post.id}>{post.title}</Link></h2>
               <p>
                 {post.text}
               </p>
@@ -23,4 +25,4 @@ const Posts = () => {
   )
 }
 
-export default Posts;
+export default memo(Posts);
