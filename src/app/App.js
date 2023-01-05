@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Posts from 'pages/Posts/Posts';
 import Post from 'pages/Post/Post';
+import CreatePost from 'pages/CreatePost/CreatePost';
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
   {
     path: '/:postId',
     element: <Post />,
+  },
+  {
+    path: '/create',
+    element: <CreatePost />,
   },
 ]);
 

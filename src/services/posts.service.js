@@ -10,5 +10,10 @@ export const PostsService = {
   },
   async getById(id) {
     return axios.get(`/posts/${id}`)
-  }
+  },
+  async create(data) {
+    return axios.post('/posts', data, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+  },
 }
