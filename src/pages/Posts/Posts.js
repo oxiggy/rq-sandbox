@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { usePosts } from 'hooks/usePosts';
 
 const Posts = () => {
-  const { isLoading, posts } = usePosts();
+  const { isLoading, posts, refetch } = usePosts();
 
   return (
     <div>
       <h1>Posts</h1>
-      {isLoading ? <div>loading</div> : posts.length ?
+      {isLoading ? <div>loading</div> : posts?.length ?
         <div>
           {posts.map(post => (
             <div key={post.id}>
@@ -21,6 +21,7 @@ const Posts = () => {
         </div>
         : <div>Elements not found</div>
       }
+      <button onClick={() => refetch()}>Fetch data</button>
     </div>
   )
 }
